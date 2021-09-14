@@ -5,4 +5,7 @@ public class Alumno {
     private String name;
 
     private String lastName;
+
+    public void study(){
+    }
 }
