@@ -5,4 +5,7 @@ public class Profesor {
     private String name;
 
     private String lastName;
+
+    private Alumno[] alumnos;
+
 }
