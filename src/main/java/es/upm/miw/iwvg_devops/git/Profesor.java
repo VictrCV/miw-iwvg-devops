@@ -8,4 +8,6 @@ public class Profesor {
 
     private Alumno[] alumnos;
 
+    public void fail(Alumno alumno){
+    }
 }
