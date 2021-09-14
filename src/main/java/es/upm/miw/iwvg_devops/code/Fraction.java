@@ -64,7 +64,7 @@ public class Fraction {
     }
 
     public boolean isImproperFraction(){
-        return this.numerator > this.denominator;
+        return !this.isProperFraction();
     }
 
     public Fraction multiplyFraction(Fraction otherFraction){
@@ -72,9 +72,36 @@ public class Fraction {
                 this.denominator * otherFraction.getDenominator());
     }
 
-    public boolean equals(Fraction otherFraction){
-        return this.numerator == otherFraction.getNumerator() && this.denominator == otherFraction.getDenominator();
+    public double decimalValue(){
+        return (double) this.numerator/this.denominator;
     }
+
+    public int compareTo(Fraction otherFraction){
+        return Double.compare(this.decimalValue(), otherFraction.decimalValue());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; //mira si es exactamente el mismo objeto
+        if (o == null || this.getClass() != o.getClass()) return false; //mira si es null o si son clases distintas
+
+        Fraction fraction = (Fraction) o; //casting
+
+        return this.numerator == fraction.getNumerator() && this.denominator == fraction.getDenominator();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = numerator;
+        result = 31 * result + denominator;
+        return result;
+    }
+
+    public boolean isNegativeFraction(){
+        return this.numerator < 0 ^ this.denominator < 0;
+    }
+
+
 
     @Override
     public String toString() {

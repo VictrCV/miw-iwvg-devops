@@ -42,13 +42,15 @@ public class Searches {
                         .anyMatch(Fraction::isProperFraction))
                 .map(User::getId);
     }
-/*
+
     public Fraction findFractionMultiplicationByUserFamilyName(String familyName) {
         return new UsersDatabase().findAll()
                 .filter(user -> familyName.equals(user.getFamilyName()))
-
+                .flatMap(user -> user.getFractions().stream())
+                .reduce(Fraction::multiplyFraction)
+                .orElse(new Fraction());
     }
-*/
+
     public Fraction findFirstFractionDivisionByUserId(String id) {
         return null;
     }
@@ -75,13 +77,18 @@ public class Searches {
                         .anyMatch(Fraction::isImproperFraction))
                 .map(User::getFamilyName);
     }
-
+/*
     public Fraction findHighestFraction() {
-        return null;
+        return
+                .max(Fraction::compareTo)
+                .orElse(new Fraction());
     }
-
+*/
     public Stream<String> findUserNameByAnyImproperFraction() {
-        return Stream.empty();
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                        .anyMatch(Fraction::isImproperFraction))
+                .map(User::getName);
     }
 
     public Stream<String> findUserFamilyNameByAllNegativeSignFractionDistinct() {
