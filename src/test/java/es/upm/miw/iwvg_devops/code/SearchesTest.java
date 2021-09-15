@@ -56,6 +56,6 @@ class SearchesTest {
 
     @Test
     void testFindFractionMultiplicationByUserFamilyName() {
-        assertEquals(new Fraction(0, 1), new Searches().findFractionMultiplicationByUserFamilyName("Fernandez"));
+        assertEquals(new Fraction(8, 8), new Searches().findFractionMultiplicationByUserFamilyName("Torres"));
     }
 }
